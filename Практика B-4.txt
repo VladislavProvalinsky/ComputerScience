@@ -1,0 +1,151 @@
+//PrB-4-1
+//Создать двухмерный квадратный массив, и заполнить его «бабочкой», т.е таким образом:
+//1 1 1 1 1
+//0 1 1 1 0
+//0 0 1 0 0
+//0 1 1 1 0
+//1 1 1 1 1
+//Замечание: при изменении размера матрицы бабочка должна автоматически
+//масштабироваться. 
+
+package matrixbutterfly;
+
+public class MatrixButterfly {
+
+    public static void main(String[] args) {
+        int l = 10;
+        int nxn[][] = new int[l][l];
+
+        for (int i = 0; i <= nxn.length / 2; i++) {
+            for (int j = i; j < (nxn[i].length - i); j++) {
+                nxn[i][j] = 1;
+            }
+        }
+
+        for (int i = nxn.length / 2; i < nxn.length; i++) {
+            for (int j = nxn.length - i - 1; j <= i; j++) {
+                nxn[i][j] = 1;
+            }
+        }
+        for (int i = 0; i < nxn.length; i++) {
+            for (int j = 0; j < nxn[i].length; j++) {
+                System.out.print(nxn[i][j] + " ");
+            }
+            System.out.println("");
+        }
+    }
+}
+
+
+//PrB-4-2
+//В заданной матрице размерности MxN найти минимальное значение. 
+package matrix.minvalue;
+
+class Matrix {
+
+    int MinValueMatrix(int mas[][]) {
+        int min = mas[0][0];
+        for (int i = 0; i < mas.length; i++) {
+            for (int j = 0; j < mas[i].length; j++) {
+                if (min > mas[i][j]) {
+                    min = mas[i][j];
+                }
+            }
+        }
+        return min;
+    }
+}
+
+public class MatrixMinValue {
+
+    public static void main(String[] args) {
+        Matrix minValue = new Matrix();
+        int a[][] = new int[7][7];
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a[i].length; j++) {
+                a[i][j] = (int) (Math.random() * 100);
+                System.out.print(a[i][j] + " ");
+            }
+            System.out.println();
+        }
+        int temp = minValue.MinValueMatrix(a);
+        System.out.println("Миннимальное значение массива: " + temp);
+    }
+}
+
+//PrB-4-3
+//Написать программу выполняющее поэлементное вычитание и поэлементное сложение
+//одной матрицы размерности MxN и другой матрицы той же самой размерности. Пример
+//поэлементного вычитания/сложения: 
+
+package matrixsumminus;
+
+public class MatrixSumMinus {
+
+    public static void main(String[] args) {
+        int m = 7;
+        int n = 7;
+        int mas1[][] = new int[m][n];
+        int mas2[][] = new int[m][n];
+        int mas3[][] = new int[m][n];
+        for (int i = 0; i < mas1.length; i++) {
+            for (int j = 0; j < mas1[i].length; j++) {
+                mas1[i][j] = (int) (Math.random() * 10);
+                System.out.print(mas1[i][j] + " ");
+            }
+            System.out.print(" +  ");
+            for (int j = 0; j < mas2[i].length; j++) {
+                mas2[i][j] = (int) (Math.random() * 10);
+                System.out.print(mas2[i][j] + " ");
+            }
+            System.out.print(" =  ");
+            for (int j = 0; j < mas2[i].length; j++) {
+                mas3[i][j] = mas1[i][j] + mas2[i][j];
+                System.out.print(mas3[i][j] + " ");
+            }
+            System.out.println("");
+        }
+    }
+}
+
+//PrB-4-4
+//Написать программу выполняющую матричное произведение двух заданных
+//прямоугольных матриц
+package matrixmultiplication;
+
+public class MatrixMultiplication {
+
+    public static void main(String[] args) {
+        int m = 2;
+        int n = 3;
+        int x = 2;
+        int mas1[][] = new int[m][n];
+        int mas2[][] = new int[n][x];
+        int mas3[][] = new int[m][x];
+        for (int i = 0; i < mas1.length; i++) {
+            for (int j = 0; j < mas1[i].length; j++) {
+                mas1[i][j] = (int) (Math.random() * 10);
+                System.out.print(mas1[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("*");
+        for (int i = 0; i < mas2.length; i++) {
+            for (int j = 0; j < mas2[i].length; j++) {
+                mas2[i][j] = (int) (Math.random() * 10);
+                System.out.print(mas2[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("=");
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < x; j++) {
+                for (int a = 0; a < n; a++) {
+                    mas3[i][j] += mas1[i][a] * mas2[a][j];
+                }
+                System.out.print(mas3[i][j] + " ");
+            }
+            System.out.println("");
+        }
+    }
+}

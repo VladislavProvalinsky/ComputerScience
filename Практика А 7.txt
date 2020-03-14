@@ -1,0 +1,193 @@
+//PrA-7-1
+//Создать класс космического корабля с двумя полями и двумя методами. На базе класса
+//построить два объекта космического корабля. 
+package spaceship;
+
+class Ships {
+
+    String Name;
+    String Commander;
+
+    void Characteristics(int length, int width, int maxspeed) {
+        System.out.println("Длина корабля (метров): " + length);
+        System.out.println("Ширина корабля (метров): " + width);
+        System.out.println("Максимальная скорость корабля (парсек/мин): " + maxspeed);
+    }
+
+    void Direction(String planet) {
+        System.out.println("Двигается в направлении планеты: " + planet);
+    }
+}
+
+public class Spaceship {
+
+    public static void main(String[] args) {
+        Ships ship1 = new Ships();
+        ship1.Name = "Звезда смерти";
+        ship1.Commander = "Дарт Вейдер";
+        System.out.println("Название первого корабля: " + ship1.Name);
+        System.out.println("Командир первого корабля: " + ship1.Commander);
+        ship1.Characteristics(1000, 1000, 50);
+        ship1.Direction("Татуин");
+        System.out.println();
+        Ships ship2 = new Ships();
+        ship2.Name = "Сокол Бесконечности";
+        ship2.Commander = "Люк Скайуокер";
+        System.out.println("Название второго корабля: " + ship2.Name);
+        System.out.println("Командир второго корабля: " + ship2.Commander);
+        ship2.Characteristics(100, 40, 100);
+        ship2.Direction("Кашиик");
+    }
+}
+
+
+//PrA
+//
+//-7-2
+//Дополнить класс калькулятора операциями вычитания, умножения и деления для двух
+//операндов. Добавить метод изменения знака целочисленного значения на
+//противоположный. Добавить методы поиска минимального и максимального значения в
+//переданных в качестве параметра массивах. 
+package calculator;
+
+class Calc {
+
+    int addition(int a, int b) {
+        int res = a + b;
+        return res;
+    }
+
+    int minus(int a, int b) {
+        int res = a - b;
+        return res;
+    }
+
+    int mult(int a, int b) {
+        int res = a * b;
+        return res;
+    }
+
+    double division(double a, double b) {
+        double res = a / b;
+        return res;
+    }
+
+    int changeSymb(int a, int b) {
+        int res = a * b;
+        return -res;
+    }
+
+    int addAny(int ar[]) {
+        int sum = 0;
+        for (int item : ar) {
+            sum += item;
+        }
+        return sum;
+    }
+
+    int minValue(int ar[]) {
+        int min = ar[0];
+        for (int i = 0; i < ar.length; i++) {
+            if (min > ar[i]) {
+                min = ar[i];
+            }
+        }
+        return min;
+    }
+
+    int maxValue(int ar[]) {
+        int max = ar[0];
+        for (int i = 0; i < ar.length; i++) {
+            if (max < ar[i]) {
+                max = ar[i];
+            }
+        }
+        return max;
+    }
+
+    int countSymb(String str) {
+        return str.length();
+    }
+}
+
+public class Calculator {
+
+    public static void main(String[] args) {
+        Calc c = new Calc();
+        int temp = c.addition(3, 7);
+        System.out.println("Калькулятор суммы: " + temp);
+
+        int temp2 = c.minus(45, 17);
+        System.out.println("Калькулятор разности: " + temp2);
+
+        int temp3 = c.mult(3, 7);
+        System.out.println("Калькулятор умножения: " + temp3);
+
+        double temp4 = c.division(33, 12);
+        System.out.println("Калькулятор деления: " + temp4);
+
+        int p[] = {3, 5, 7, 9, 11};
+        int temp5 = c.addAny(p);
+        System.out.println("Калькулятор суммы эл-в массива: " + temp5);
+
+        int temp6 = c.countSymb("Hello World!!!");
+        System.out.println("Калькулятор суммы эл-в строки: " + temp6);
+
+        int temp7 = c.changeSymb(3, 7);
+        System.out.println("Калькулятор замены знака результата: " + temp7);
+
+        System.out.println("\nКалькулятор поиска минимального элемента массива");
+
+        int a[] = new int[10];
+        System.out.print("Случайный массив: ");
+        for (int i = 0; i < a.length; i++) {
+            a[i] = (int) (Math.random() * 100);
+            System.out.print(a[i] + " ");
+        }
+        int temp8 = c.minValue(a);
+        System.out.println("\nМинимальное значение массива: " + temp8);
+
+        System.out.println("\nКалькулятор поиска максимального элемента массива");
+
+        int b[] = new int[10];
+        System.out.print("Случайный массив: ");
+        for (int i = 0; i < a.length; i++) {
+            b[i] = (int) (Math.random() * 100);
+            System.out.print(b[i] + " ");
+        }
+        int temp9 = c.maxValue(b);
+        System.out.println("\nМаксимальное значение массива: " + temp9);
+    }
+}
+
+//PrA-7-3
+//Напишите программу, которая симулирует подбрасывание монетки. Оформить отедльным
+//классом и методом. Метод должен возвращать результат подбрасывания монетки. 
+package coingame;
+
+class Coin {
+
+    boolean flip() {
+        return Math.random() > 0.5 ? true : false;
+    }
+}
+
+public class CoinGame {
+
+    public static void main(String[] args) {
+
+        Coin c = new Coin();
+        int orel = 0;
+        int reshka = 0;
+        for (int i = 0; i < 10; i++) {
+            boolean temp = c.flip();
+            if (temp) {
+                orel++;
+            } else {
+                reshka++;
+            }
+        }
+        System.out.println("\"Результат подбрасывания монетки\"");
+        System.out.println("Орел выпал " + orel + " раз(-а);" + "\nРешка выпала " + reshka + " раз(-а).");
+    }
+}

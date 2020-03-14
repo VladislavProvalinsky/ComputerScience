@@ -1,0 +1,118 @@
+//PrB-31
+//
+//Напишите программу Hex2Bin для преобразования значения заданного в виде строки в
+//шестнадцатеричной системе исчисления в строку в двоичной системе исчисления.
+//Результат должен выглядеть так:
+//
+//Enter a Hexadecimal string: 1abc
+//The equivalent binary for hexadecimal "1abc" is 0001 1010 1011 1100 
+
+package hex2bin;
+
+import java.util.Scanner;
+
+public class Hex2Bin {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter a Hexadecimal string: ");
+        String str = in.next().toUpperCase();
+        char b;
+        char symbol[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+        String binary[] = {"0000", "0001", "0010", "0011", "0100", "0101", "0110",
+            "0111", "1000", "1001", "1010", "1011", "1100", "1101", "1110", "1111"};
+        System.out.print("The equivalent binary for hexadecimal '"+str+"' is: ");
+        for (int i = 0; i < str.length(); i++) {
+            b = str.charAt(i);
+            for (int j = 0; j < symbol.length; j++) {
+                if (b == symbol[j]) {
+                    System.out.print(binary[j] + " ");
+                }
+            }
+        }
+    }
+}
+
+PrB-3-2
+Напишите программу BubbleSort реализующую ”Пузырьковую сортировку”. Алгоритм
+сортировки изучить самостоятельно: https://ru.wikipedia.org/wiki/Сортировка_пузырьком
+
+package bubblesort;
+
+public class BubbleSort {
+
+    public static void main(String[] args) {
+        int mas[] = new int[10];
+        System.out.print("Массив до сортировки: ");
+        for (int i = 0; i < mas.length; i++) {
+            mas[i] = (int) (Math.random() * 10);
+            System.out.print(mas[i] + " ");
+        }
+        for (int i = 0; i < mas.length - 1; i++) {
+            for (int j = 0; j < mas.length - i - 1; j++) {
+                if (mas[j] > mas[j + 1]) {
+                    int t = mas[j];
+                    mas[j] = mas[j + 1];
+                    mas[j + 1] = t;
+                }
+            }
+        }
+        System.out.println();
+        System.out.print("Массив после пузырьковой сортировки: ");
+        for (int i = 0; i < mas.length; i++) {
+            System.out.print(mas[i] + " ");
+        }
+    }
+}
+
+//PrB-3-3
+//Написать игру GuessNumber ("Угадай число"). Программа генерирует и запоминает
+//некоторое число в диапазоне от 1 до 100. Игрок пытается его угадать - выбирает
+//очередное значение из указанного диапазона. Если значение меньше заданного, то
+//выводится подсказка "LOWER", если же больше - то "HIGHER". Игра продолжается, пока
+//игрок не угадает число.
+//В конце игры программа выводит сообщение о завершении и количество попыток,
+//которое понадобилось, чтобы угадать число. Предлагается повторить игру с самого
+//начала. 
+package guessnumber;
+
+import java.util.Scanner;
+
+public class GuessNumber {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int num = (int) (Math.random() * 100);
+        int n = 0;
+        int i = 0;
+        System.out.print("Введите загаданное число: ");
+        while (i >= 0) {
+            i++;
+            int a = in.nextInt();
+            if (a > num) {
+                n += 1;
+                System.out.print("Higher ");
+                System.out.print("Попробуйте еще раз: ");
+                i--;
+            } else if (a < num) {
+                n += 1;
+                System.out.print("Lower ");
+                System.out.print("Попробуйте еще раз: ");
+                i--;
+            } else {
+                n += 1;
+                System.out.println("Вы угадали!" + "\nВаше число: " + a + "\nКоличество использованных попыток: " + n);
+                System.out.print("Желаете повторить игру? (1-да/0-нет): ");
+                int game = in.nextInt();
+                if (game == 1) {
+                    i--;
+                    num = (int) (Math.random() * 100);
+                    System.out.print("Введите загаданное число: ");
+                } else if (game == 0) {
+                    System.out.print("Спасибо за игру! До встречи.");
+                    break;
+                }
+            }
+        }
+    }
+}

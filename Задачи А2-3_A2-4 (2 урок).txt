@@ -1,0 +1,66 @@
+//PrA2-3
+//–азработайте приложение CheckLeapYear. ѕрисвойте значение true булевской
+//переменной leapYear если целочисленна€ переменна€ year €вл€етс€ високосным годом.
+//
+//ѕодсказка: в високосном году 366 дней, в обычном 365.
+//
+//1. ≈сли год не делитс€ на 4, значит он обычный.
+//2. »наче надо проверить не делитс€ ли год на 100.
+//3. ≈сли не делитс€, значит это не столетие и можно сделать вывод, что год
+//високосный.
+//4. ≈сли делитс€ на 100, значит это столетие, и следует проверить его делимость на
+//400.
+//5. ≈сли год делитс€ на 400, то он високосный.
+//6. »наче год обычный. 
+package checkleapyear;
+
+import java.util.Scanner;
+
+public class CheckLeapYear {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.print("¬ведите ваш год: ");
+        boolean leapYear=false;
+        int year = in.nextInt();
+        if (year % 4 == 0 && year % 100 > 0)
+            leapYear = true;
+        else if (year % 100 == 0 && year % 400 == 0) 
+            leapYear = true;
+        System.out.println(leapYear);
+    }
+}
+
+//PrA2-4
+//
+//–азработайте приложение TransportationPriceList. ѕрисвойте значение вещественной
+//переменной cost в зависимости от значени€ целочисленной переменной distance согласно
+//таблице ниже:
+//Distance                                                Cost
+//-----------------------------------------------------------
+//ќт 0 до 100                                             5.00
+//ќт 100 до 500                                           8.00
+//ќт 500 до 1000                                          10.00
+//1000 и больше                                           12.00 
+package transportationpricelist;
+
+import java.util.Scanner;
+
+public class TransportationPriceList {
+
+    public static void main(String[] args) {
+        Scanner name = new Scanner(System.in);
+        System.out.print("¬ведите нужную дистанцию: ");
+        double cost = 0;
+        int distance = name.nextInt();
+        if (distance >= 0 && distance < 100)
+            cost = 5;
+        else if (distance >= 100 && distance < 500)
+            cost = 8;
+        else if (distance >= 500 && distance < 1000)
+            cost = 10;
+        else if (distance >= 1000)
+            cost = 12;
+        System.out.println("¬аша цена: "+cost+" $");
+    }
+}

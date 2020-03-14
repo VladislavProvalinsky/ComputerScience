@@ -1,0 +1,125 @@
+//PrA-6-1
+//Напишите программу SquareBoard, которая создает массив-матрицу nxn (n=5) все
+//элементы которой установлены в значение 1 используя два вложенных цикла for. 
+//1 1 1 1 1
+//1 1 1 1 1
+//1 1 1 1 1
+//1 1 1 1 1
+//1 1 1 1 1
+//Программа должна выводить сформированную матрицу в консоль. 
+
+package squareboard;
+
+public class SquareBoard {
+
+    public static void main(String[] args) {
+        int Mas[][] = new int[5][5];
+        for (int i = 0; i < Mas.length; i++) {
+            for (int j = 0; j < Mas[i].length; j++) {
+                Mas[i][j] = 1;
+                System.out.print(Mas[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+//PrA-6-2
+//Напишите программу ColumnBoard, которая создает массив-матрицу nxn (n=8) используя
+//два вложенных цикла for.
+//1 0 1 0 1 0 1 0
+//1 0 1 0 1 0 1 0
+//1 0 1 0 1 0 1 0
+//1 0 1 0 1 0 1 0
+//1 0 1 0 1 0 1 0
+//1 0 1 0 1 0 1 0
+//1 0 1 0 1 0 1 0
+//1 0 1 0 1 0 1 0
+//Программа должна выводить сформированную матрицу в консоль. 
+
+package columnboard;
+
+public class ColumnBoard {
+
+    public static void main(String[] args) {
+        int mas[][] = new int[8][8];
+        for (int i = 0; i < mas.length; i++) {
+            for (int j = 0; j < mas[i].length; j++) {
+                if (j % 2 == 0) {
+                    mas[i][j] = 1;
+                    System.out.print(mas[i][j] + " ");
+                }
+                else {
+                    mas [i][j]=0;
+                    System.out.print(mas[i][j] + " ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+//PrA-6-3
+//Напишите программу CheckerBoard, которая создает массив-матрицу nxn (n=8) используя
+//два вложенных цикла for.
+//1 0 1 0 1 0 1 0
+//0 1 0 1 0 1 0 1
+//1 0 1 0 1 0 1 0
+//0 1 0 1 0 1 0 1
+//1 0 1 0 1 0 1 0
+//0 1 0 1 0 1 0 1
+//1 0 1 0 1 0 1 0
+//0 1 0 1 0 1 0 1
+//Программа должна выводить сформированную матрицу в консоль. 
+
+package checkerboard;
+
+public class CheckerBoard {
+
+    public static void main(String[] args) {
+        int mas[][] = new int[8][8];
+        for (int i = 0; i < mas.length; i++) {
+            for (int j = 0; j < mas[i].length; j++) {
+                if ((i + j) % 2 == 0) {
+                    mas[i][j] = 1;
+                } else {
+                    mas[i][j] = 0;
+                }
+                System.out.print(mas[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+//PrA-6-4
+//Напишите программу RaggedBoard, которая создает двумерный массив с уступами
+//используя два вложенных цикла for.
+//1 1 1 1 1 1
+//1 1 1 
+//1 1 1 1 1 1
+//1 1 1
+//1 1 1 1 1 1
+//1 1 1
+//Программа должна выводить сформированный двумерный массив в консоль. 
+
+package raggedboard;
+
+public class RaggedBoard {
+
+    public static void main(String[] args) {
+        int mas[][] = new int[6][];
+        for (int i = 0; i < mas.length; i++) {
+            if (i % 2 != 0) {
+                mas[i] = new int[3];
+            } else {
+                mas[i] = new int[6];
+            }
+            for (int j = 0; j < mas[i].length; j++) {
+                mas[i][j] = 1;
+                System.out.print(mas[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
